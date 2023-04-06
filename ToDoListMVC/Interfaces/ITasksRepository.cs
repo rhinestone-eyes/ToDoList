@@ -1,4 +1,5 @@
 ﻿using ToDoListMVC.Models;
+using ToDoListMVC.ViewModels;
 namespace ToDoListMVC.Interfaces
 {
     public interface ITasksRepository

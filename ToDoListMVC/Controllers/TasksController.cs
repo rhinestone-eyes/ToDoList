@@ -4,6 +4,7 @@ using ToDoListMVC.Models;
 using ToDoListMVC.ViewModels;
 using ToDoListMVC.Repositories;
 using ToDoListMVC.Interfaces;
+using AutoMapper;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ToDoListMVC.Controllers
@@ -12,11 +13,12 @@ namespace ToDoListMVC.Controllers
 	{
         private readonly ITasksRepository tasksRepository;
 		private readonly ICategoriesRepository categoriesRepository;
-
-		public TasksController(ITasksRepository tasksRepository, ICategoriesRepository categoriesRepository)
+        private readonly IMapper mapper;
+		public TasksController(ITasksRepository tasksRepository, ICategoriesRepository categoriesRepository, IMapper mapper)
         {
             this.tasksRepository = tasksRepository;
             this.categoriesRepository = categoriesRepository;
+            this.mapper = mapper;
         }
         public IActionResult Index()
         {
@@ -25,23 +27,24 @@ namespace ToDoListMVC.Controllers
             return View(new TasksIndexViewModel()
             {
                 ToDos = tasks,
-                Categories = categories
+                Categories = categories,
             });
         }
-        //public IActionResult Create()
-        //{
-        //    return View("Index");
-        //}
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(ToDoModel task)
+        public IActionResult Create(CreateTaskViewModel createTaskViewModel)
         {
+            //ToDoModel task = mapper.Map<ToDoModel>(createTaskViewModel);
+            var task = new ToDoModel()
+            {
+                CategoryId = createTaskViewModel.CategoryId,
+                Name = createTaskViewModel.Name,
+                DueDate = createTaskViewModel.DueDate,
+            };
             if (!ModelState.IsValid) 
             {
                 return View(task);
             }
             tasksRepository.CreateTask(task);
-
                 return RedirectToAction("Index");
         }
         [HttpGet]

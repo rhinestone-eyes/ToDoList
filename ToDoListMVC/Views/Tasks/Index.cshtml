@@ -1,31 +1,30 @@
 ﻿@model TasksIndexViewModel
 
-@{
-	ViewData["Title"] = "Index";
-}
-
 <html>
 <head>
-	<title>ToDo List</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body style="">
-<form asp-controller="Tasks" asp-action="Index">
-	<div style="text-align: center ">
-	<h3>ToDo list</h3>
-		<div>
-			<b>Enter your task: </b>
-			<input type="text" placeholder="Input your task" asp-for ="CreateTask.Name"/>
-            <input type = "datetime-local" asp-for = "CreateTask.DueDate"/>
-			<select asp-for="CreateTask.CategoryId">
-				@foreach(var item in Model.Categories)
-					{
-						<option value="@item.Id">@item.Name</option>
-					}
-			</select>
-			<input type = "submit"/>
-		</div>
-	</div>
-</form>
+    <form asp-action="Create" method="post">
+        <div style="text-align: center;">
+            <h3>ToDo list</h3>
+            <div>
+                <b>Enter your task: </b>
+                <input type="text" name="CreateTaskViewModel.Name" id="CreateTaskViewModel.Name" placeholder="Input your task" />
+                <input type="datetime-local" name="CreateTaskViewModel.DueDate" id="CreateTaskViewModel.DueDate" />
+                <select asp-for="CreateTaskViewModel.CategoryId">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <input type="submit" value="Add" class="btn btn-success" />
+            </div>
+            <div>
+                <span asp-validation-for="CreateTaskViewModel.Name"></span>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

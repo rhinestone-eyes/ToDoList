@@ -1,13 +1,14 @@
+using AutoMapper;
 using ToDoListMVC.DBHelper;
 using ToDoListMVC.Interfaces;
 using ToDoListMVC.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ITasksRepository, TasksRepository>();
 builder.Services.AddSingleton<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddAutoMapper(typeof(MapperConfiguration));
 
 var app = builder.Build();
 

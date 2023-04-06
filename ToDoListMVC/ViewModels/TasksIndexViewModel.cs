@@ -1,4 +1,5 @@
-﻿using ToDoListMVC.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using ToDoListMVC.Models;
 
 namespace ToDoListMVC.ViewModels
 {
@@ -6,6 +7,7 @@ namespace ToDoListMVC.ViewModels
 	{
 		public IEnumerable<ToDoModel> ToDos { get; set; }
 		public IEnumerable<CategoriesModel> Categories { get; set; }
-		public CreateTaskViewModel CreateTask { get; set; }
+        [BindProperty]
+        public CreateTaskViewModel CreateTaskViewModel { get; set; }
 	}
 }
