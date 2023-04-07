@@ -5,9 +5,10 @@ namespace ToDoListMVC.ViewModels
 	public class CreateTaskViewModel
 	{
 		[Required]
-		[StringLength(maximumLength: 60, ErrorMessage = "Task description should be between 2 and 60 symbols.", MinimumLength = 2)]
+		[StringLength(maximumLength: 50, ErrorMessage = "Task description should be less than 50 symbols.")]
+		[MinLength(2, ErrorMessage = "Task description should be more than 2 symbols.")]
 		public string? Name { get; set; }
-		public int CategoryId { get; set; }
-		public DateTime DueDate { get; set; }
+		public int? CategoryId { get; set; }
+		public DateTime? DueDate { get; set; }
 	}
 }

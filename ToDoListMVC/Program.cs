@@ -1,4 +1,5 @@
 using AutoMapper;
+using ToDoListMVC;
 using ToDoListMVC.DBHelper;
 using ToDoListMVC.Interfaces;
 using ToDoListMVC.Repositories;
@@ -8,7 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ITasksRepository, TasksRepository>();
 builder.Services.AddSingleton<ICategoriesRepository, CategoriesRepository>();
 builder.Services.AddSingleton<DapperContext>();
-builder.Services.AddAutoMapper(typeof(MapperConfiguration));
+builder.Services.AddAutoMapper(typeof(MapperConfigurationProfile));
 
 var app = builder.Build();
 

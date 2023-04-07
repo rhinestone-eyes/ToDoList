@@ -2,7 +2,7 @@
 
 namespace ToDoListMVC.ViewModels
 {
-	public class UpdateTaskViewModel
+	public class EditTaskViewModel
 	{
 		public ToDoModel Task { get; set; }
 		public IEnumerable<CategoriesModel> Categories { get; set; }

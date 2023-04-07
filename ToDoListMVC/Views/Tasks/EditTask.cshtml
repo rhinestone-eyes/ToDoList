@@ -1,0 +1,38 @@
+﻿@model EditTaskViewModel
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Editing task</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="margin: 400px; font-family:Oswald; font-size: 18px; background-color:#2c3034;">
+	<div style="display:flex; justify-content:center; align-items:center; margin:auto;">
+		<table class="table table-dark table-striped table-bordered table-hover" style="max-width: 975px;">
+			<tr>
+				<td colspan="6">
+					<form asp-action="Edit">
+						<div class="input-group">
+							<input type="text" hidden asp-for="Task.Id" />
+							<input type="text" asp-for="Task.Status" hidden />
+							<input type="text" asp-for="Task.Name" placeholder="Enter your deserved task text"
+		   style="width:580px; border-top-left-radius:10px; border-bottom-left-radius:10px" ; />
+							<input type="datetime-local" value="@Model.Task.DueDate" asp-for="Task.DueDate" />
+							<select asp-for="@Model.Task.CategoryId">
+								<option value="@null">No category</option>
+								@foreach (var category in Model.Categories)
+								{
+									<option value="@category.Id">@category.Name</option>
+								}
+							</select>
+							<input type="submit" value="Edit" class="btn btn-success"
+								   style="border-top-right-radius:10px; border-bottom-right-radius:10px" />
+						</div>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
