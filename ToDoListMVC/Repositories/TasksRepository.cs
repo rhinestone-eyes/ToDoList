@@ -27,7 +27,7 @@ namespace ToDoListMVC.Repositories
 			}
 		}
 
-		public ToDoModel GetTask(int? id)
+		public ToDoModel GetTask(int id)
 		{
 			var query = "SELECT * FROM Tasks WHERE Id = @Id";
 			using (var connection = context.CreateConnection())

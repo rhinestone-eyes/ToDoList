@@ -1,4 +1,5 @@
 ﻿namespace ToDoListMVC.Models
+
 {
 	public class CategoriesModel
 	{

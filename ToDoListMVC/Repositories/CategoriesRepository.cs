@@ -1,7 +1,7 @@
 ﻿namespace ToDoListMVC.Repositories;
+
 using ToDoListMVC.Interfaces;
 using Dapper;
-using System.Data;
 using ToDoListMVC.DBHelper;
 using ToDoListMVC.Models;
 
@@ -25,7 +25,7 @@ public class CategoriesRepository : ICategoriesRepository
 		}
 	}
 
-	public CategoriesModel GetCategory(int? id)
+	public CategoriesModel GetCategory(int id)
 	{
 		var query = "SELECT * FROM Categories WHERE Id = @Id";
 		using (var connection = context.CreateConnection())

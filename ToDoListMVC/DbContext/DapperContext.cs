@@ -5,15 +5,15 @@ namespace ToDoListMVC.DBHelper
 {
 	public class DapperContext
 	{
-		private readonly IConfiguration _configuration;
-		private readonly string _connectionString;
+		private readonly IConfiguration configuration;
+		private readonly string connectionString;
 
 		public DapperContext(IConfiguration configuration)
 		{
-			_configuration = configuration;
-			_connectionString = _configuration.GetConnectionString("DefaultConnection");
+			this.configuration = configuration;
+			connectionString = configuration.GetConnectionString("DefaultConnection");
 		}
 
-		public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+		public IDbConnection CreateConnection() => new SqlConnection(connectionString);
 	}
 }

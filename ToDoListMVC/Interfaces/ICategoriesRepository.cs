@@ -6,6 +6,6 @@ namespace ToDoListMVC.Interfaces
 	public interface ICategoriesRepository
 	{
 		IEnumerable<CategoriesModel>GetCategories();
-		CategoriesModel GetCategory(int? id);
+		CategoriesModel GetCategory(int id);
 	}
 }
