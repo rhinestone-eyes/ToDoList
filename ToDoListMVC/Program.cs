@@ -1,4 +1,3 @@
-using AutoMapper;
 using ToDoListMVC;
 using ToDoListMVC.DBHelper;
 using ToDoListMVC.Interfaces;

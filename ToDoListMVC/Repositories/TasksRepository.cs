@@ -20,22 +20,15 @@ namespace ToDoListMVC.Repositories
 			var query = "SELECT * FROM Tasks";
 
 			using (var connection = context.CreateConnection())
-			{
-				var tasks = connection.Query<ToDoModel>(query);
-
-				return tasks.ToList();
-			}
+				return connection.Query<ToDoModel>(query);
 		}
 
 		public ToDoModel GetTask(int id)
 		{
 			var query = "SELECT * FROM Tasks WHERE Id = @Id";
-			using (var connection = context.CreateConnection())
-			{
-				var task = connection.QuerySingleOrDefault<ToDoModel>(query, new {Id = id});
 
-				return task;
-			}
+			using (var connection = context.CreateConnection())
+				return connection.QuerySingleOrDefault<ToDoModel>(query, new { Id = id });
 		}
 
 		public void CreateTask(ToDoModel task)
@@ -48,9 +41,7 @@ namespace ToDoListMVC.Repositories
 			parameters.Add("DueDate", task.DueDate, DbType.Date);
 
 			using (var connection = context.CreateConnection())
-			{
 				connection.Execute(query, parameters);
-			}
 		}
 		public void EditTask(int id, ToDoModel task)
 		{
@@ -62,49 +53,38 @@ namespace ToDoListMVC.Repositories
 			parameters.Add("DueDate", task.DueDate, DbType.Date);
 			parameters.Add("Status", task.Status, DbType.Boolean);
 			using (var connection = context.CreateConnection())
-			{
 				connection.Execute(query, parameters);
-			}
 		}
 		public void TaskIsDone(int id, DateTime DoneDate)
 		{
 			var query = "UPDATE Tasks SET DueDate = @DoneDate, Status = 1 WHERE Id = @Id";
 
 			using (var connection = context.CreateConnection())
-			{
 				connection.Execute(query, new { DoneDate = DoneDate, Id = id });
-			}
 		}
 
 		public void DeleteTask(int id)
 		{
 			var query = "DELETE FROM Tasks WHERE Id = @Id";
+
 			using (var connection = context.CreateConnection())
-			{
 				connection.Execute(query, new {Id = id});
-			}
 		}
 
 		public IEnumerable<ToDoModel> GetCompletedTasks()
 		{
 			var query = "SELECT * FROM Tasks WHERE Status= 1 ORDER BY DueDate DESC";
-			using (var connection = context.CreateConnection())
-			{
-				var completedTasks = connection.Query<ToDoModel>(query);
 
-				return completedTasks.ToList();
-			}
+			using (var connection = context.CreateConnection())
+				return connection.Query<ToDoModel>(query).ToList();
 		}
 
 		public IEnumerable<ToDoModel> GetUncompletedTasks()
 		{
 			var query = "SELECT * FROM Tasks WHERE STATUS = 0 ORDER BY CASE WHEN DueDate IS NULL THEN 1 ELSE 0 END ASC, DueDate ASC";
-			using (var connection = context.CreateConnection())
-			{
-				var uncompletedTasks = connection.Query<ToDoModel>(query);
 
-				return uncompletedTasks.ToList();
-			}
+			using (var connection = context.CreateConnection())
+				return connection.Query<ToDoModel>(query).ToList();
 		}
 	}
 }

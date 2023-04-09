@@ -18,22 +18,14 @@ public class CategoriesRepository : ICategoriesRepository
 	{
 		var query = "SELECT * FROM Categories";
 		using (var connection = context.CreateConnection())
-		{
-			var categories = connection.Query<CategoriesModel>(query);
-
-			return categories.ToList();
-		}
+			return connection.Query<CategoriesModel>(query).ToList();
 	}
 
 	public CategoriesModel GetCategory(int id)
 	{
 		var query = "SELECT * FROM Categories WHERE Id = @Id";
 		using (var connection = context.CreateConnection())
-		{
-			var category = connection.QuerySingleOrDefault<CategoriesModel>(query);
-
-			return category;
-		}
+			return connection.QuerySingleOrDefault<CategoriesModel>(query);
 	}
 }
 
