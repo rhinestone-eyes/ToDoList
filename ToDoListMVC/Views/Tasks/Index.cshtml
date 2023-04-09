@@ -26,6 +26,7 @@
 						</select>
 						<input type="submit" value="Add" class="btn btn-success"
 							   style="border-top-right-radius:10px; border-bottom-right-radius:10px" />
+						<span asp-validation-for="CreateTaskViewModel.Name"></span>
 					</div>
 				</form>
 			</td>
@@ -80,8 +81,8 @@
 				</td>
 				<td class="text-center">
 					<form asp-action="Edit" method="get">
-						<input type="text" hidden value="@item.Id" name="Id"/>
-						<input type='submit' onclick="return confirm ('Are you sure you want to edit this task(@item.Name)?');" class="btn btn-sm btn-secondary" style="color: white" value="Edit"/>
+						<input type="text" hidden value="@item.Id" name="Id" />
+						<input type='submit' onclick="return confirm ('Are you sure you want to edit this task(@item.Name)?');" class="btn btn-sm btn-secondary" style="color: white" value="Edit" />
 					</form>
 				</td>
 				<td class="text-center">
@@ -134,8 +135,5 @@
 			</tr>
 		}
 	</table>
-	<div>
-		<span asp-validation-for="CreateTaskViewModel.Name"></span>
-	</div>
 </body>
 </html>

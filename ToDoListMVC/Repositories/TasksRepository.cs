@@ -66,7 +66,6 @@ namespace ToDoListMVC.Repositories
 				connection.Execute(query, parameters);
 			}
 		}
-
 		public void TaskIsDone(int id, DateTime DoneDate)
 		{
 			var query = "UPDATE Tasks SET DueDate = @DoneDate, Status = 1 WHERE Id = @Id";
@@ -96,6 +95,7 @@ namespace ToDoListMVC.Repositories
 				return completedTasks.ToList();
 			}
 		}
+
 		public IEnumerable<ToDoModel> GetUncompletedTasks()
 		{
 			var query = "SELECT * FROM Tasks WHERE STATUS = 0 ORDER BY CASE WHEN DueDate IS NULL THEN 1 ELSE 0 END ASC, DueDate ASC";

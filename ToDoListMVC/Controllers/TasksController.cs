@@ -15,12 +15,14 @@ namespace ToDoListMVC.Controllers
 		private readonly ITasksRepository tasksRepository;
 		private readonly ICategoriesRepository categoriesRepository;
 		private readonly IMapper mapper;
+
 		public TasksController(ITasksRepository tasksRepository, ICategoriesRepository categoriesRepository, IMapper mapper)
 		{
 			this.tasksRepository = tasksRepository;
 			this.categoriesRepository = categoriesRepository;
 			this.mapper = mapper;
 		}
+
 		public IActionResult Index()
 		{
 			var tasks = tasksRepository.GetTasks();
@@ -35,11 +37,13 @@ namespace ToDoListMVC.Controllers
 				CompletedTasks = completedTasks
 			});
 		}
+
 		[HttpGet]
 		public IActionResult Create()
 		{
 			return View();
 		}
+
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public IActionResult Create(CreateTaskViewModel createTaskViewModel)
@@ -64,8 +68,8 @@ namespace ToDoListMVC.Controllers
 			tasksRepository.CreateTask(task);
 
 			return RedirectToAction("Index");
-
 		}
+
 		[HttpGet]
 		public IActionResult Edit(int id)
 		{
@@ -77,6 +81,7 @@ namespace ToDoListMVC.Controllers
 				Categories = categories
 			});
 		}
+
 		[HttpPost]
 		public IActionResult Edit(ToDoModel task)
 		{
@@ -85,6 +90,7 @@ namespace ToDoListMVC.Controllers
 
 			return RedirectToAction("Index");
 		}
+
 		[HttpPost]
 		public IActionResult TaskIsDone(int id)
 		{
@@ -92,6 +98,7 @@ namespace ToDoListMVC.Controllers
 
 			return RedirectToAction("Index");
 		}
+
 		[HttpPost]
 		public IActionResult Delete(int id)
 		{

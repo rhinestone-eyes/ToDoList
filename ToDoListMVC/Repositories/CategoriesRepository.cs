@@ -8,6 +8,7 @@ using ToDoListMVC.Models;
 public class CategoriesRepository : ICategoriesRepository
 {
 	private readonly DapperContext context;
+
 	public CategoriesRepository(DapperContext context)
 	{
 		this.context = context;
@@ -16,7 +17,6 @@ public class CategoriesRepository : ICategoriesRepository
 	public IEnumerable<CategoriesModel> GetCategories()
 	{
 		var query = "SELECT * FROM Categories";
-
 		using (var connection = context.CreateConnection())
 		{
 			var categories = connection.Query<CategoriesModel>(query);
@@ -24,6 +24,7 @@ public class CategoriesRepository : ICategoriesRepository
 			return categories.ToList();
 		}
 	}
+
 	public CategoriesModel GetCategory(int? id)
 	{
 		var query = "SELECT * FROM Categories WHERE Id = @Id";
