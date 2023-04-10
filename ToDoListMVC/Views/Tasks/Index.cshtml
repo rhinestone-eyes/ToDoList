@@ -41,7 +41,7 @@
 		<tr class="text-center">
 			<td colspan="6"><b>Tasks in process</b></td>
 		</tr>
-		@foreach (var item in Model.UncompletedTasks)
+		@foreach (var item in Model.ToDos.Where(t=>!t.Status))
 		{
 			<tr>
 				<td>
@@ -97,7 +97,7 @@
 		<tr class="text-center">
 			<td colspan="6"><b>Completed tasks</b></td>
 		</tr>
-		@foreach (var item in Model.CompletedTasks)
+		@foreach (var item in Model.ToDos.Where(t => t.Status))
 		{
 			<tr>
 				<td class="text-center">

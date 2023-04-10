@@ -5,8 +5,6 @@ namespace ToDoListMVC.Interfaces
     public interface ITasksRepository
     {
         IEnumerable<ToDoModel> GetTasks();
-        IEnumerable<ToDoModel> GetCompletedTasks();
-        IEnumerable<ToDoModel> GetUncompletedTasks();
         ToDoModel GetTask(int id);
         void CreateTask(ToDoModel task);
         void EditTask(int id, ToDoModel task);

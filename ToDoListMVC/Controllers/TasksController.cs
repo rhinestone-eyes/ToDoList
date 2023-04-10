@@ -88,15 +88,11 @@ namespace ToDoListMVC.Controllers
 		{
 			var tasks = tasksRepository.GetTasks();
 			var categories = categoriesRepository.GetCategories();
-			var uncompletedTasks = tasksRepository.GetUncompletedTasks();
-			var completedTasks = tasksRepository.GetCompletedTasks();
 
 			return new TasksIndexViewModel()
 			{
 				ToDos = tasks,
 				Categories = categories,
-				UncompletedTasks = uncompletedTasks,
-				CompletedTasks = completedTasks
 			};
 		}
 	}

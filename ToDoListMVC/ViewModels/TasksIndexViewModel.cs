@@ -8,10 +8,6 @@ namespace ToDoListMVC.ViewModels
 
 		public IEnumerable<CategoriesModel> Categories { get; set; }
 
-		public IEnumerable<ToDoModel> CompletedTasks { get; set; }
-
-		public IEnumerable<ToDoModel> UncompletedTasks { get; set; }
-
         public CreateTaskViewModel CreateTaskViewModel { get; set; }
 	}
 }

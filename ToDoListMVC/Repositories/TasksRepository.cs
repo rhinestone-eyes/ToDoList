@@ -70,21 +70,5 @@ namespace ToDoListMVC.Repositories
 			using (var connection = context.CreateConnection())
 				connection.Execute(query, new {Id = id});
 		}
-
-		public IEnumerable<ToDoModel> GetCompletedTasks()
-		{
-			var query = "SELECT * FROM Tasks WHERE Status= 1 ORDER BY DueDate DESC";
-
-			using (var connection = context.CreateConnection())
-				return connection.Query<ToDoModel>(query).ToList();
-		}
-
-		public IEnumerable<ToDoModel> GetUncompletedTasks()
-		{
-			var query = "SELECT * FROM Tasks WHERE STATUS = 0 ORDER BY CASE WHEN DueDate IS NULL THEN 1 ELSE 0 END ASC, DueDate ASC";
-
-			using (var connection = context.CreateConnection())
-				return connection.Query<ToDoModel>(query).ToList();
-		}
 	}
 }
