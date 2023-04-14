@@ -4,8 +4,6 @@ using ToDoListMVC.ViewModels;
 using ToDoListMVC.Interfaces;
 using AutoMapper;
 
-
-
 namespace ToDoListMVC.Controllers
 {
 	public class TasksController : Controller
@@ -14,10 +12,10 @@ namespace ToDoListMVC.Controllers
 		private readonly ICategoriesRepository categoriesRepository;
 		private readonly IMapper mapper;
 
-		public TasksController(ITasksRepository tasksRepository, ICategoriesRepository categoriesRepository, IMapper mapper)
+		public TasksController(IEnumerable<ITasksRepository> tasksRepository, IEnumerable<ICategoriesRepository> categoriesRepository, IMapper mapper)
 		{
-			this.tasksRepository = tasksRepository;
-			this.categoriesRepository = categoriesRepository;
+			this.tasksRepository = tasksRepository.FirstOrDefault(t => t.StorageType == DataStorage.StorageType);
+			this.categoriesRepository = categoriesRepository.FirstOrDefault(c => c.StorageType == DataStorage.StorageType);
 			this.mapper = mapper;
 		}
 
@@ -94,6 +92,12 @@ namespace ToDoListMVC.Controllers
 				ToDos = tasks,
 				Categories = categories,
 			};
+		}
+
+		public IActionResult ChangeDataType()
+		{
+			DataStorage.ChangeStorageType();
+			return RedirectToAction("Index");
 		}
 	}
 }

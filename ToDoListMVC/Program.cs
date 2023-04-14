@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ITasksRepository, TasksRepository>();
 builder.Services.AddSingleton<ICategoriesRepository, CategoriesRepository>();
+builder.Services.AddSingleton<ITasksRepository, XMLTasksRepository>();
+builder.Services.AddSingleton<ICategoriesRepository, XMLCategoriesRepository>();
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddAutoMapper(typeof(MapperConfigurationProfile));
 

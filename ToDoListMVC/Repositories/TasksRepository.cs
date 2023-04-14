@@ -3,11 +3,13 @@ using ToDoListMVC.DBHelper;
 using Dapper;
 using System.Data;
 using ToDoListMVC.Interfaces;
+using ToDoListMVC.Enums;
 
 namespace ToDoListMVC.Repositories
 {
     public class TasksRepository : ITasksRepository
 	{
+		public string StorageType => StorageTypes.SQL;
 		private readonly DapperContext context;
 
 		public TasksRepository(DapperContext context)
@@ -20,7 +22,7 @@ namespace ToDoListMVC.Repositories
 			var query = "SELECT * FROM Tasks";
 
 			using (var connection = context.CreateConnection())
-				return connection.Query<ToDoModel>(query);
+				return connection.Query<ToDoModel>(query).ToList();
 		}
 
 		public ToDoModel GetTask(int id)
@@ -43,6 +45,7 @@ namespace ToDoListMVC.Repositories
 			using (var connection = context.CreateConnection())
 				connection.Execute(query, parameters);
 		}
+
 		public void EditTask(int id, ToDoModel task)
 		{
 			var query = "UPDATE Tasks SET Name = @Name, Status = @Status, DueDate = @DueDate, CategoryId = @CategoryId Where Id = @Id";
@@ -55,6 +58,7 @@ namespace ToDoListMVC.Repositories
 			using (var connection = context.CreateConnection())
 				connection.Execute(query, parameters);
 		}
+
 		public void TaskIsDone(int id, DateTime DoneDate)
 		{
 			var query = "UPDATE Tasks SET DueDate = @DoneDate, Status = 1 WHERE Id = @Id";

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ToDoDataStorage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tasks />
+  <Categories>
+    <CategoriesModel>
+      <Id>1</Id>
+      <Name>Sport</Name>
+    </CategoriesModel>
+    <CategoriesModel>
+      <Id>2</Id>
+      <Name>Habit</Name>
+    </CategoriesModel>
+    <CategoriesModel>
+      <Id>3</Id>
+      <Name>Work</Name>
+    </CategoriesModel>
+    <CategoriesModel>
+      <Id>4</Id>
+      <Name>Shopping</Name>
+    </CategoriesModel>
+  </Categories>
+</ToDoDataStorage>
