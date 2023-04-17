@@ -28,7 +28,7 @@ namespace ToDoListMVC.Repositories
 			using (FileStream fs = new FileStream(connectionString, FileMode.Truncate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
-				return toDoDataStorage.Categories.Find(item => item.Id == id);
+				return toDoDataStorage.Categories.FirstOrDefault(item => item.Id == id);
 			}
 		}
 	}
