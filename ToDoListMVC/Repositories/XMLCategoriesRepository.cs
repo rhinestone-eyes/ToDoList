@@ -8,13 +8,13 @@ namespace ToDoListMVC.Repositories
 	public class XMLCategoriesRepository : ICategoriesRepository
 	{
 		public string StorageType => StorageTypes.XML;
+		private ToDoDataStorage? toDoDataStorage;
 		private readonly string connectionString = "E:\\Programming\\Sana Course Projects\\Паша і Олег\\ToDoList\\ToDoListMVC\\ToDoStorage.xml";
 
 		XmlSerializer xmlSerializer = new XmlSerializer(typeof(ToDoDataStorage));
 
 		public IEnumerable<CategoriesModel> GetCategories()
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
@@ -24,7 +24,6 @@ namespace ToDoListMVC.Repositories
 
 		public CategoriesModel GetCategory(int id)
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.Truncate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);

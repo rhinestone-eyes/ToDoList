@@ -9,12 +9,13 @@ namespace ToDoListMVC.Repositories
 	public class XMLTasksRepository : ITasksRepository
 	{
 		public string StorageType => StorageTypes.XML;
+		private ToDoDataStorage? toDoDataStorage;
 		private readonly string connectionString = "E:\\Programming\\Sana Course Projects\\Паша і Олег\\ToDoList\\ToDoListMVC\\ToDoStorage.xml";
 		XmlSerializer xmlSerializer = new XmlSerializer(typeof(ToDoDataStorage));
 
 		public IEnumerable<ToDoModel>? GetTasks()
 		{
-			ToDoDataStorage? toDoDataStorage;
+			
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
@@ -24,7 +25,6 @@ namespace ToDoListMVC.Repositories
 
 		public ToDoModel GetTask(int id)
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
@@ -34,7 +34,6 @@ namespace ToDoListMVC.Repositories
 
 		public void CreateTask(ToDoModel task)
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
@@ -52,7 +51,6 @@ namespace ToDoListMVC.Repositories
 
 		public void DeleteTask(int id)
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
@@ -73,7 +71,6 @@ namespace ToDoListMVC.Repositories
 
 		public void EditTask(int id, ToDoModel task)
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
@@ -88,7 +85,6 @@ namespace ToDoListMVC.Repositories
 
 		public void TaskIsDone(int id, DateTime DoneDate)
 		{
-			ToDoDataStorage? toDoDataStorage;
 			using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
 			{
 				toDoDataStorage = (ToDoDataStorage?)xmlSerializer.Deserialize(fs);
