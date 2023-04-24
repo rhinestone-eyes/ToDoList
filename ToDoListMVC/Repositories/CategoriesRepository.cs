@@ -4,11 +4,10 @@ using ToDoListMVC.Interfaces;
 using Dapper;
 using ToDoListMVC.DBHelper;
 using ToDoListMVC.Models;
-using ToDoListMVC.Enums;
 
 public class CategoriesRepository : ICategoriesRepository
 {
-	public string StorageType => StorageTypes.SQL;
+	public string StorageType => "SQL";
 	private readonly DapperContext context;
 
 	public CategoriesRepository(DapperContext context)

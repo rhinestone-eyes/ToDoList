@@ -94,9 +94,9 @@ namespace ToDoListMVC.Controllers
 			};
 		}
 
-		public IActionResult ChangeDataType()
+		public IActionResult ChangeDataType(string storageType)
 		{
-			DataStorage.ChangeStorageType();
+			DataStorage.ChangeStorageType(storageType);
 			return RedirectToAction("Index");
 		}
 	}

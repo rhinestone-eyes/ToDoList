@@ -1,13 +1,11 @@
-﻿using ToDoListMVC.Enums;
-
-namespace ToDoListMVC
+﻿namespace ToDoListMVC
 {
 	public static class DataStorage
 	{
-		public static string StorageType = StorageTypes.SQL;
-		public static void ChangeStorageType()
+		public static string StorageType = "SQL";
+		public static void ChangeStorageType(string storageType)
 		{
-			StorageType = StorageType == StorageTypes.SQL ? StorageTypes.XML : StorageTypes.SQL;
+			StorageType = storageType;
 		}
 	}
 }

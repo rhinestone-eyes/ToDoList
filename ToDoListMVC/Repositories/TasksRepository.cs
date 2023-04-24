@@ -3,13 +3,12 @@ using ToDoListMVC.DBHelper;
 using Dapper;
 using System.Data;
 using ToDoListMVC.Interfaces;
-using ToDoListMVC.Enums;
 
 namespace ToDoListMVC.Repositories
 {
     public class TasksRepository : ITasksRepository
 	{
-		public string StorageType => StorageTypes.SQL;
+		public string StorageType => "SQL";
 		private readonly DapperContext context;
 
 		public TasksRepository(DapperContext context)

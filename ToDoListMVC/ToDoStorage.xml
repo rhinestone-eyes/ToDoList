@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ToDoDataStorage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Tasks />
+  <Tasks>
+    <ToDoModel>
+      <Id>1</Id>
+      <Name>jjjjjsdasda</Name>
+      <CategoryId>2</CategoryId>
+      <DueDate>2023-04-24T21:26:00.6380962+03:00</DueDate>
+      <Status>true</Status>
+    </ToDoModel>
+  </Tasks>
   <Categories>
     <CategoriesModel>
       <Id>1</Id>

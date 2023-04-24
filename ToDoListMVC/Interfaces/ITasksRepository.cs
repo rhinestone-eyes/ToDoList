@@ -4,24 +4,18 @@ namespace ToDoListMVC.Interfaces
 {
     public interface ITasksRepository
     {
-        IEnumerable<ToDoModel> GetTasks();
-	    
+        IEnumerable<ToDoModel> GetTasks();	    
 
         ToDoModel GetTask(int id);
 	    
+        void CreateTask(ToDoModel task); 
 
-        void CreateTask(ToDoModel task);
-	    
+        void EditTask(int id, ToDoModel task); 
 
-        void EditTask(int id, ToDoModel task);
-	    
+        void TaskIsDone(int id, DateTime DoneDate);  
 
-        void TaskIsDone(int id, DateTime DoneDate);
-	    
+        void DeleteTask(int id);    
 
-        void DeleteTask(int id);
-	    
-
-	public string StorageType { get; }
+	    public string StorageType { get; }
     }
 }

@@ -1,5 +1,4 @@
-﻿@using ToDoListMVC.Enums;
-@model TasksIndexViewModel
+﻿@model TasksIndexViewModel
 
 <html>
 <head>
@@ -13,15 +12,15 @@
 		<form asp-action="ChangeDataType">
 			<div class="input-group">
 				<select asp-for="@DataStorage.StorageType">
-					@if (DataStorage.StorageType == StorageTypes.SQL)
+					@if (DataStorage.StorageType == "SQL")
 					{
-						<option value="@StorageTypes.SQL">@StorageTypes.SQL</option>
-						<option value="@StorageTypes.XML">@StorageTypes.XML</option>
+						<option value="SQL" selected>SQL</option>
+						<option value="XML">XML</option>
 					}
 					else
 					{
-						<option value="@StorageTypes.XML">@StorageTypes.XML</option>
-						<option value="@StorageTypes.SQL">@StorageTypes.SQL</option>
+						<option value="SQL">SQL</option>
+						<option value="XML" selected>XML</option>
 					}
 				</select>
 				<input type="submit" onclick="return confirm ('Are you sure you want to change data type?')" class="btn btn-success" value="Change data type" style="color: white" />

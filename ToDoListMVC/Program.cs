@@ -1,7 +1,7 @@
 using ToDoListMVC;
-using ToDoListMVC.DBHelper;
 using ToDoListMVC.Interfaces;
 using ToDoListMVC.Repositories;
+using ToDoListMVC.DBHelper;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
